@@ -1,0 +1,14 @@
+PLATAFORMA COWORKING - VERSION WEB (Grupo 8)
+
+1. coworking_app.py (tu codigo original) ya viene incluido en esta carpeta.
+2. Ejecuta 01_script_coworking.sql en SQL Server.
+3. En una terminal dentro de esta carpeta:
+      pip install -r requirements.txt
+      python servidor_web.py
+4. Abre http://localhost:5000
+
+Estructura:
+  coworking_app.py   (tu codigo original, sin cambios)
+  servidor_web.py
+  requirements.txt
+  static/index.html

@@ -1,0 +1,700 @@
+
+:root {
+    --pri: #352443;
+    --acc: #c46b9b;
+    --acc2: #a84f82;
+    --bg: #f7f3fa;
+    --card: #ffffff;
+    --txt: #30263a;
+    --mut: #796d83;
+    --bor: #eadfed;
+    --ok: #27856f;
+    --bad: #c44f70;
+    --lilac: #8b75b7;
+    --pink: #d88caf;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    background: linear-gradient(135deg, #f8f4fa, #f3edf8, #fbf3f7);
+    color: var(--txt);
+    font-size: 14px;
+    min-height: 100vh;
+}
+
+/* ENCABEZADO */
+
+header {
+    min-height: 76px;
+    background: linear-gradient(110deg, #30213d, #493052, #674267);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 30px;
+    border-bottom: 3px solid #d98caf;
+    box-shadow: 0 5px 22px rgba(52,34,65,.16);
+    position: relative;
+    z-index: 2;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 19px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+header small {
+    color: #eaddec;
+    font-size: 12px;
+}
+
+.logo {
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    background: linear-gradient(145deg, #e9a4c2, #b98bd1);
+    color: #382541;
+    display: grid;
+    place-items: center;
+    font-size: 19px;
+    font-weight: 800;
+}
+
+/* ESTRUCTURA */
+
+.app-shell {
+    display: grid;
+    grid-template-columns: 250px minmax(0, 1fr);
+    min-height: calc(100vh - 76px);
+}
+
+/* MENÚ LATERAL */
+
+.sidebar {
+    background: linear-gradient(180deg, #382743, #493052, #5a3c60);
+    color: white;
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    box-shadow: 5px 0 22px rgba(53,36,67,.08);
+}
+
+.side-brand {
+    padding: 4px 10px 16px;
+    border-bottom: 1px solid rgba(255,255,255,.14);
+}
+
+.side-brand .eyebrow {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #e4c8dc;
+    font-weight: 700;
+}
+
+.side-brand h2 {
+    font-size: 17px;
+    line-height: 1.3;
+    margin: 9px 0 5px;
+    color: white;
+}
+
+.side-brand p {
+    font-size: 12px;
+    line-height: 1.5;
+    color: #d9c9df;
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0;
+    background: transparent;
+    border: 0;
+}
+
+nav button {
+    width: 100%;
+    text-align: left;
+    border: 1px solid transparent;
+    background: transparent;
+    padding: 13px 14px;
+    border-radius: 11px;
+    font: 600 13px "Segoe UI", system-ui, sans-serif;
+    color: #e6dce9;
+    cursor: pointer;
+    transition: all .18s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+nav button::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #c89aba;
+}
+
+nav button:hover {
+    background: rgba(255,255,255,.09);
+    color: white;
+}
+
+nav button.on {
+    color: #392542;
+    background: linear-gradient(110deg, #f1c4d8, #d9c2eb);
+    border-color: rgba(255,255,255,.3);
+    box-shadow: 0 7px 18px rgba(20,10,30,.16);
+}
+
+nav button.on::before {
+    background: #754c83;
+}
+
+.submenu-ops {
+    display: none;
+    margin: -2px 0 5px 17px;
+    padding-left: 10px;
+    border-left: 2px solid rgba(232, 194, 220, .45);
+    gap: 6px;
+}
+
+.submenu-ops.visible {
+    display: flex;
+    flex-direction: column;
+}
+
+nav .submenu-ops button {
+    padding: 9px 11px;
+    font-size: 12px;
+    background: rgba(255,255,255,.055);
+}
+
+nav .submenu-ops button::before {
+    width: 5px;
+    height: 5px;
+    background: #d9b5d3;
+}
+
+nav .submenu-ops button.selected {
+    color: #392542;
+    background: linear-gradient(110deg, #f1c4d8, #d9c2eb);
+}
+
+.side-note {
+    margin-top: auto;
+    border: 1px solid rgba(255,255,255,.16);
+    border-radius: 15px;
+    padding: 15px;
+    background: rgba(255,255,255,.07);
+}
+
+.side-note .spark {
+    font-size: 20px;
+    margin-bottom: 7px;
+}
+
+.side-note strong {
+    display: block;
+    font-size: 12px;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.side-note span {
+    display: block;
+    color: #ddcfe3;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+/* CONTENIDO */
+
+main {
+    padding: 28px 32px;
+    max-width: 1600px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.card {
+    background: rgba(255,255,255,.96);
+    border: 1px solid var(--bor);
+    border-radius: 16px;
+    padding: 21px;
+    box-shadow: 0 5px 18px rgba(66,42,77,.055);
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    margin: 0 0 5px;
+    color: #493052;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.card p.ayuda {
+    margin: 0 0 14px;
+    color: var(--mut);
+    font-size: 13px;
+}
+
+/* FORMULARIOS */
+
+.bar {
+    display: flex;
+    gap: 14px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+
+.bar .sp {
+    flex: 1;
+}
+
+label {
+    font-size: 12px;
+    font-weight: 650;
+    color: #6c5877;
+    display: block;
+    margin-bottom: 6px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #dfd2e5;
+    border-radius: 9px;
+    font: inherit;
+    background: white;
+    color: var(--txt);
+    transition: border .15s, box-shadow .15s;
+}
+
+input:focus, select:focus {
+    outline: 0;
+    border-color: #bd83b4;
+    box-shadow: 0 0 0 3px rgba(196,107,155,.14);
+}
+
+input[readonly] {
+    background: #f5f1f7;
+    color: var(--mut);
+}
+
+.bar input, .bar select {
+    width: auto;
+    min-width: 220px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 14px 17px;
+}
+
+/* OPERACIONES */
+
+.ops {
+    display: grid;
+    grid-template-columns: minmax(280px, 760px);
+    gap: 20px;
+    justify-content: center;
+}
+
+.ops .card {
+    width: 100%;
+    margin: 0;
+}
+
+.ops .campo {
+    margin-bottom: 12px;
+}
+
+/* BOTONES */
+
+button.btn {
+    border: 1px solid #dfd2e5;
+    background: white;
+    color: #594465;
+    padding: 10px 17px;
+    border-radius: 9px;
+    font: 650 13px "Segoe UI", system-ui, sans-serif;
+    cursor: pointer;
+    transition: .18s;
+}
+
+button.btn:hover {
+    background: #f8f2fa;
+    border-color: #c8afd1;
+    transform: translateY(-1px);
+}
+
+button.btn.acc {
+    background: linear-gradient(110deg, #cc78a1, #a987c6);
+    border-color: transparent;
+    color: white;
+    box-shadow: 0 5px 12px rgba(174,105,157,.2);
+}
+
+button.btn.acc:hover {
+    background: linear-gradient(110deg, #b85e8d, #9570b5);
+}
+
+button.btn.del {
+    color: #bd4f70;
+    border-color: #edcbd7;
+}
+
+button.btn.del:hover {
+    background: #fff4f7;
+}
+
+.acciones {
+    display: flex;
+    gap: 9px;
+    margin-top: 18px;
+    flex-wrap: wrap;
+}
+
+/* TABLAS */
+
+.tabla-wrap {
+    overflow: auto;
+    max-height: 360px;
+    border: 1px solid var(--bor);
+    border-radius: 11px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 13px;
+}
+
+th {
+    position: sticky;
+    top: 0;
+    background: #4a3454;
+    color: white;
+    text-align: left;
+    padding: 11px 13px;
+    white-space: nowrap;
+    font-size: 12px;
+}
+
+td {
+    padding: 9px 13px;
+    border-bottom: 1px solid #f0e8f2;
+    white-space: nowrap;
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+tbody tr {
+    cursor: pointer;
+}
+
+tbody tr:nth-child(even) {
+    background: #fcf9fd;
+}
+
+tbody tr:hover {
+    background: #f8edf5;
+}
+
+tbody tr.sel {
+    background: #f1ddeb !important;
+}
+
+.total {
+    color: var(--mut);
+    font-size: 12px;
+}
+
+.vacio {
+    padding: 32px;
+    text-align: center;
+    color: var(--mut);
+}
+
+.pregunta {
+    background: #fbf3fa;
+    border-left: 4px solid #c477a5;
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    color: #624a69;
+}
+
+/* PANTALLA INICIAL */
+
+#login {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: grid;
+    grid-template-columns: minmax(260px, 1fr) minmax(340px, 440px);
+    align-items: center;
+    gap: clamp(24px, 7vw, 110px);
+    padding: clamp(22px, 7vw, 100px);
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(43, 27, 53, 0.82),
+            rgba(65, 39, 70, 0.48)
+        ),
+        url("/images/coworking.jpg") center center / cover no-repeat;
+}
+
+#login .login-brand {
+    color: white;
+    max-width: 560px;
+    text-shadow: 0 2px 18px rgba(0,0,0,.24);
+}
+
+#login .login-brand .brand-kicker {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #f4c9df;
+    font-weight: 700;
+}
+
+#login .login-brand h1 {
+    font-size: clamp(38px, 5vw, 66px);
+    line-height: 1.03;
+    margin: 14px 0 16px;
+    letter-spacing: -1.8px;
+}
+
+#login .login-brand h1 span {
+    color: #f1a9cb;
+}
+
+#login .login-brand p {
+    font-size: 17px;
+    line-height: 1.6;
+    color: white;
+    margin: 0;
+    max-width: 460px;
+}
+
+#login .brand-points {
+    display: grid;
+    gap: 13px;
+    margin-top: 32px;
+    font-size: 14px;
+    color: white;
+}
+
+#login .brand-points span {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+#login .brand-points b {
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    background: rgba(244,201,223,.2);
+    display: grid;
+    place-items: center;
+    color: #ffd8e9;
+}
+
+#login .card {
+    width: 100%;
+    padding: 30px;
+    border-radius: 20px;
+    background: rgba(255,255,255,.95);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 24px 70px rgba(22,12,30,.32);
+}
+
+#login h2 {
+    margin: 0 0 4px;
+    color: #493052;
+}
+
+.pista {
+    color: var(--mut);
+    font-size: 12px;
+    margin: 10px 0 16px;
+    line-height: 1.55;
+}
+
+#login .campo {
+    margin-bottom: 13px;
+}
+
+#login .btn.acc {
+    padding: 13px;
+    font-size: 14px;
+}
+
+/* NOTIFICACIONES */
+
+#toasts {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    display: grid;
+    gap: 10px;
+    z-index: 99;
+    width: min(380px, 90vw);
+}
+
+.toast {
+    background: white;
+    border-left: 5px solid var(--ok);
+    padding: 13px 16px;
+    border-radius: 11px;
+    box-shadow: 0 9px 28px rgba(40,24,50,.18);
+    white-space: pre-wrap;
+    animation: in .25s;
+}
+
+.toast.err {
+    border-color: var(--bad);
+}
+
+.toast b {
+    display: block;
+    margin-bottom: 3px;
+}
+
+@keyframes in {
+    from {
+        transform: translateY(12px);
+        opacity: 0;
+    }
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* CAMPOS DE SOLO LECTURA PARA MOSTRAR LOS ID */
+
+.campo-lectura {
+    background: #f1edf5;
+    color: #493052;
+    font-weight: 700;
+    cursor: not-allowed;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 850px) {
+    .app-shell {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        padding: 12px 14px;
+        gap: 10px;
+    }
+
+    .side-brand {
+        display: none;
+    }
+
+    nav {
+        flex-direction: row;
+        overflow-x: auto;
+    }
+
+    nav button {
+        min-width: max-content;
+        width: auto;
+    }
+
+    .side-note {
+        display: none;
+    }
+
+    main {
+        padding: 18px;
+    }
+}
+
+@media (max-width: 760px) {
+    #login {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 22px;
+        overflow: auto;
+    }
+
+    #login .login-brand {
+        max-width: 520px;
+    }
+
+    #login .login-brand h1 {
+        font-size: 36px;
+        margin: 8px 0;
+    }
+
+    #login .login-brand p {
+        font-size: 14px;
+    }
+
+    #login .brand-points {
+        display: none;
+    }
+
+    #login .card {
+        max-width: 440px;
+        margin: 0 auto;
+        padding: 23px;
+    }
+}
+
+@media (max-width: 560px) {
+    header {
+        padding: 12px 16px;
+        align-items: flex-start;
+        gap: 8px;
+        flex-direction: column;
+    }
+
+    header h1 {
+        font-size: 16px;
+    }
+
+    .ops {
+        grid-template-columns: 1fr;
+    }
+
+    .bar input,
+    .bar select {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .bar > div {
+        width: 100%;
+    }
+
+    main {
+        padding: 13px;
+    }
+}

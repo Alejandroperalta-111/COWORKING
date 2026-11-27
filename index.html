@@ -1,0 +1,608 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CoworkingDB | Grupo 8</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <!-- ==========================================
+         PANTALLA DE CONEXIÓN
+    =========================================== -->
+
+    <div id="login">
+
+        <div class="login-brand">
+
+            <div class="brand-kicker">
+                Workspace Grupo 8
+            </div>
+
+            <h1>
+                Tu espacio, tu mejor versión.
+            </h1>
+
+            <p>
+                Administra espacios, reservas y operaciones
+                desde un solo lugar.
+            </p>
+
+            <div class="brand-points">
+
+                <span>
+                    <b>✦</b>
+                    Gestión inteligente de espacios
+                </span>
+
+                <span>
+                    <b>✦</b>
+                    Reservas y pagos organizados
+                </span>
+
+                <span>
+                    <b>✦</b>
+                    Consultas para mejores decisiones
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- FORMULARIO DE CONEXIÓN -->
+
+        <div class="card">
+
+            <h2>Conectar a SQL Server</h2>
+
+            <p class="pista">
+                Plataforma de gestión de espacios de coworking.
+            </p>
+
+            <div class="campo">
+
+                <label for="l-srv">
+                    Servidor
+                </label>
+
+                <input
+                    id="l-srv"
+                    type="text"
+                    value="localhost"
+                    placeholder="localhost"
+                >
+
+            </div>
+
+
+            <div class="campo">
+
+                <label for="l-usr">
+                    Usuario SQL
+                </label>
+
+                <input
+                    id="l-usr"
+                    type="text"
+                    placeholder="Usuario SQL"
+                >
+
+            </div>
+
+
+            <div class="campo">
+
+                <label for="l-pwd">
+                    Contraseña
+                </label>
+
+                <input
+                    id="l-pwd"
+                    type="password"
+                    placeholder="Contraseña"
+                >
+
+            </div>
+
+
+            <p class="pista">
+                Si dejas el usuario vacío se utiliza la autenticación
+                de Windows.
+
+                <br>
+
+                Ejemplos: localhost, localhost\SQLEXPRESS.
+            </p>
+
+
+            <button
+                class="btn acc"
+                id="l-ok"
+                type="button"
+                style="width:100%"
+            >
+                Conectar
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==========================================
+         ENCABEZADO PRINCIPAL
+    =========================================== -->
+
+    <header>
+
+        <h1>
+
+            <span class="logo">
+                C
+            </span>
+
+            Plataforma de gestión de espacios de coworking
+
+        </h1>
+
+        <small id="base"></small>
+
+    </header>
+
+
+    <!-- ==========================================
+         ESTRUCTURA PRINCIPAL
+    =========================================== -->
+
+    <div class="app-shell">
+
+
+        <!-- ======================================
+             MENÚ LATERAL
+        ======================================= -->
+
+        <aside class="sidebar">
+
+
+            <div class="side-brand">
+
+                <div class="eyebrow">
+                    Workspace Grupo 8
+                </div>
+
+                <h2>
+                    Tu espacio, tu mejor versión.
+                </h2>
+
+                <p>
+                    Administra espacios, reservas y operaciones
+                    desde un solo lugar.
+                </p>
+
+            </div>
+
+
+            <!-- NAVEGACIÓN -->
+
+            <nav>
+
+                <button
+                    type="button"
+                    data-tab="crud"
+                    class="on"
+                >
+                    Gestión de datos (CRUD)
+                </button>
+
+
+                <button
+                    type="button"
+                    data-tab="ops"
+                    id="nav-ops"
+                >
+                    Reservas y pagos
+
+                    <span
+                        class="flecha-ops"
+                        style="margin-left:auto"
+                    >
+                        ▾
+                    </span>
+
+                </button>
+
+
+                <!-- SUBMENÚ DE OPERACIONES -->
+
+                <div
+                    class="submenu-ops"
+                    id="submenu-ops"
+                ></div>
+
+
+                <button
+                    type="button"
+                    data-tab="con"
+                >
+                    Consultas del negocio
+                </button>
+
+            </nav>
+
+
+            <!-- INFORMACIÓN LATERAL -->
+
+            <div class="side-note">
+
+                <div class="spark">
+                    ✦
+                </div>
+
+                <strong>
+                    Gestión inteligente
+                </strong>
+
+                <span>
+                    Una experiencia organizada para conectar
+                    personas, ideas y espacios.
+                </span>
+
+            </div>
+
+        </aside>
+
+
+        <!-- ======================================
+             CONTENIDO PRINCIPAL
+        ======================================= -->
+
+        <main>
+
+
+            <!-- ==================================
+                 SECCIÓN 1: GESTIÓN DE DATOS
+            =================================== -->
+
+            <section id="tab-crud">
+
+
+                <!-- TABLA DE REGISTROS -->
+
+                <div class="card">
+
+                    <div class="bar">
+
+
+                        <div>
+
+                            <label for="c-tabla">
+                                Tabla
+                            </label>
+
+                            <select id="c-tabla"></select>
+
+                        </div>
+
+
+                        <div>
+
+                            <label for="c-buscar">
+                                Buscar
+                            </label>
+
+                            <input
+                                id="c-buscar"
+                                type="text"
+                                placeholder="Filtrar registros..."
+                            >
+
+                        </div>
+
+
+                        <span class="sp"></span>
+
+
+                        <span
+                            class="total"
+                            id="c-total"
+                        ></span>
+
+
+                    </div>
+
+
+                    <!-- TABLA DINÁMICA -->
+
+                    <div
+                        class="tabla-wrap"
+                        id="c-grid"
+                    ></div>
+
+                </div>
+
+
+
+                <!-- FORMULARIO CRUD -->
+
+                <div class="card">
+
+                    <h3>
+                        Datos del registro
+                    </h3>
+
+
+                    <p class="ayuda">
+                        Los campos con * son obligatorios.
+                        Selecciona una fila para editarla.
+                    </p>
+
+
+                    <!-- CAMPOS GENERADOS POR JAVASCRIPT -->
+
+                    <div
+                        class="grid"
+                        id="c-form"
+                    ></div>
+
+
+                    <!-- BOTONES CRUD -->
+
+                    <div class="acciones">
+
+
+                        <button
+                            class="btn acc"
+                            id="b-reg"
+                            type="button"
+                        >
+                            Registrar nuevo
+                        </button>
+
+
+                        <button
+                            class="btn"
+                            id="b-act"
+                            type="button"
+                        >
+                            Actualizar
+                        </button>
+
+
+                        <button
+                            class="btn del"
+                            id="b-del"
+                            type="button"
+                        >
+                            Eliminar
+                        </button>
+
+
+                        <button
+                            class="btn"
+                            id="b-lim"
+                            type="button"
+                        >
+                            Limpiar formulario
+                        </button>
+
+
+                        <span
+                            class="sp"
+                            style="flex:1"
+                        ></span>
+
+
+                        <button
+                            class="btn"
+                            id="b-ref"
+                            type="button"
+                        >
+                            Refrescar
+                        </button>
+
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ==================================
+                 SECCIÓN 2: RESERVAS Y PAGOS
+            =================================== -->
+
+            <section
+                id="tab-ops"
+                class="hidden"
+            >
+
+                <!-- CONTENIDO GENERADO POR JAVASCRIPT -->
+
+                <div
+                    class="ops"
+                    id="ops"
+                ></div>
+
+            </section>
+
+
+
+            <!-- ==================================
+                 SECCIÓN 3: CONSULTAS DEL NEGOCIO
+            =================================== -->
+
+            <section
+                id="tab-con"
+                class="hidden"
+            >
+
+
+                <div class="card">
+
+
+                    <!-- SELECTOR DE CONSULTAS -->
+
+                    <div class="bar">
+
+
+                        <div>
+
+                            <label for="q-sel">
+                                Consulta
+                            </label>
+
+                            <select
+                                id="q-sel"
+                                style="min-width:400px"
+                            ></select>
+
+                        </div>
+
+
+
+                        <div style="align-self:flex-end">
+
+                            <button
+                                class="btn acc"
+                                id="q-run"
+                                type="button"
+                            >
+                                Ejecutar consulta
+                            </button>
+
+                        </div>
+
+
+
+                        <span class="sp"></span>
+
+
+
+                        <span
+                            class="total"
+                            id="q-total"
+                        ></span>
+
+
+                    </div>
+
+
+
+                    <!-- DESCRIPCIÓN DE LA CONSULTA -->
+
+                    <div
+                        class="pregunta"
+                        id="q-desc"
+                    ></div>
+
+
+
+                    <!-- PARÁMETROS DE CONSULTA -->
+
+                    <div
+                        class="grid hidden"
+                        id="q-par"
+                        style="margin-bottom:14px"
+                    >
+
+
+                        <div>
+
+                            <label for="q-ini">
+                                Inicio (AAAA-MM-DD HH:MM)
+                            </label>
+
+                            <input
+                                id="q-ini"
+                                type="datetime-local"
+                            >
+
+                        </div>
+
+
+
+                        <div>
+
+                            <label for="q-fin">
+                                Fin (AAAA-MM-DD HH:MM)
+                            </label>
+
+                            <input
+                                id="q-fin"
+                                type="datetime-local"
+                            >
+
+                        </div>
+
+
+
+                        <div>
+
+                            <label for="q-sede">
+                                Sede
+                            </label>
+
+                            <select id="q-sede"></select>
+
+                        </div>
+
+
+
+                        <div>
+
+                            <label for="q-tipo">
+                                Tipo de espacio
+                            </label>
+
+                            <select id="q-tipo"></select>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- RESULTADOS DE CONSULTAS -->
+
+                    <div
+                        class="tabla-wrap"
+                        id="q-grid"
+                        style="max-height:480px"
+                    ></div>
+
+
+                </div>
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+
+   
+    <div id="toasts"></div>
+
+
+  
+
+    <script
+        src="/js/app.js"
+        defer
+    ></script>
+
+
+</body>
+</html>
